@@ -5,9 +5,10 @@ import java.util.Scanner;
 
 public abstract class Day
 {
+    protected ArrayList<String> input;
     public Day()
     {
-        ArrayList<String> input = new ArrayList<>();
+        input = new ArrayList<>();
         try {
             Scanner sc = new Scanner(new File("src/input"));
             while (sc.hasNextLine()) {
@@ -18,13 +19,14 @@ public abstract class Day
         catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        compute(input);
+        System.out.println(this.getClass().getSimpleName() + " part 1: " + part1());
+        System.out.println(this.getClass().getSimpleName() + " part 2: " + part2());
     }
-
-    protected abstract void compute(ArrayList<String> input);
+    protected abstract Object part1();
+    protected abstract Object part2();
 
     public static void main(String[] args)
     {
-        new Day3();
+        new Day1();
     }
 }

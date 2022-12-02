@@ -1,10 +1,14 @@
-import java.util.ArrayList;
-
 public class Day3 extends Day
 {
     @Override
-    protected void compute(ArrayList<String> input)
+    protected Object part1()
     {
+        return null;
+    }
 
+    @Override
+    protected Object part2()
+    {
+        return null;
     }
 }
