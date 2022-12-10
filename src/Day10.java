@@ -1,24 +1,20 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Day10 extends Day
 {
     @Override
     protected Object part1()
     {
-        int result = 0;
-        for (String s : input)
-        {
+        //accidantly deleted code while cleanup :p oopsi.
 
-        }
-        return result;
+        return null;
     }
 
     @Override
     protected Object part2()
     {
-        int result = 0;
-        for (String s : input)
-        {
-
-        }
-        return result;
+        return null;
     }
 }
