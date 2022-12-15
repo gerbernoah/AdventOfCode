@@ -40,29 +40,35 @@ public class Day15 extends Day
     @Override
     protected Object part2()
     {
-        for (int i = 3000000; i < 4000000; i++)
+        Point[] scanners = new Point[input.size()];
+        Point[] beacons = new Point[input.size()];
+        for (int i = 0; i < input.size(); i++)
         {
-            for (int j = 0; j < 4000000; j++)
+            String[] words = input.get(i).split(" ");
+            scanners[i] = new Point(
+                    Integer.parseInt(words[2].split("=")[1].replace(",", "")),
+                    Integer.parseInt(words[3].split("=")[1].replace(":", ""))
+            );
+            beacons[i] = new Point(
+                    Integer.parseInt(words[8].split("=")[1].replace(",", "")),
+                    Integer.parseInt(words[9].split("=")[1])
+            );
+        }
+
+        for (int i = 0; i <= 4000000; i++)
+        {
+            for (int j = 0; j <= 4000000; j++)
             {
-                System.out.println("cur: " + i + " " + j);
                 Point cur = new Point(j, i);
                 boolean isBeacon = true;
-                for (String s : input)
+                for (int k = 0; k < scanners.length; k++)
                 {
-                    String[] words = s.split(" ");
-                    Point sensor = new Point(
-                            Integer.parseInt(words[2].split("=")[1].replace(",", "")),
-                            Integer.parseInt(words[3].split("=")[1].replace(":", ""))
-                    );
-                    Point beacon = new Point(
-                            Integer.parseInt(words[8].split("=")[1].replace(",", "")),
-                            Integer.parseInt(words[9].split("=")[1])
-                    );
-
-                    if (distance(sensor, beacon) > distance(sensor, cur))
+                    Point scanner = scanners[k];
+                    Point beacon = beacons[k];
+                    if (distance(scanner, beacon) > distance(scanner, cur))
                     {
                         isBeacon = false;
-                        j = Math.max(j, sensor.x + distance(sensor, beacon) - Math.abs(sensor.y - i));
+                        j = scanner.x + distance(scanner, beacon) - Math.abs(scanner.y - i);
                         break;
                     }
                 }
