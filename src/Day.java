@@ -27,6 +27,6 @@ public abstract class Day
 
     public static void main(String[] args)
     {
-        new Day18();
+        new Day19();
     }
 }
